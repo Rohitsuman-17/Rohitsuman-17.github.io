@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rohit Suman — Data-Driven Analyst | MBA Business Analytics | Marketing, Finance & Supply Chain">
+<title>Rohit Suman | Data-Driven Analyst</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#08040f;
+  --bg2:#0c0618;
+  --card:rgba(255,255,255,0.03);
+  --card2:rgba(255,255,255,0.05);
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(139,92,246,0.25);
+  --purple:#8b5cf6;
+  --purple2:#7c3aed;
+  --purple-dim:rgba(139,92,246,0.12);
+  --purple-glow:rgba(139,92,246,0.35);
+  --pink:#ff2d78;
+  --pink-dim:rgba(255,45,120,0.1);
+  --pink-glow:rgba(255,45,120,0.3);
+  --cyan:#00d4ff;
+  --cyan-dim:rgba(0,212,255,0.08);
+  --cyan-glow:rgba(0,212,255,0.3);
+  --text:#f0eeff;
+  --text2:#9490b0;
+  --text3:#4a4570;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--purple),var(--pink));border-radius:2px;}
+
+/* ── STAR CANVAS ── */
+#starCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ── ORB ── */
+.orb-wrap{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:900px;height:520px;z-index:0;pointer-events:none;display:flex;justify-content:center;}
+.orb-outer{position:absolute;top:-60px;width:440px;height:440px;border-radius:50%;background:radial-gradient(ellipse at 35% 35%,#7c3aed 0%,#4c1d95 35%,#2d0a6e 60%,#1a0540 80%,transparent 100%);animation:orbFloat 7s ease-in-out infinite;box-shadow:0 0 80px 20px rgba(109,40,217,0.3),0 0 160px 60px rgba(109,40,217,0.15),0 0 300px 100px rgba(109,40,217,0.06);}
+.orb-ring1{position:absolute;top:-60px;width:440px;height:440px;border-radius:50%;border:1.5px solid rgba(139,92,246,0.2);animation:orbFloat 7s ease-in-out infinite,ringPulse 3s ease-in-out infinite;box-shadow:inset 0 0 40px rgba(139,92,246,0.1);}
+.orb-ring2{position:absolute;top:-110px;width:540px;height:540px;border-radius:50%;border:1px solid rgba(139,92,246,0.1);animation:orbFloat 7s ease-in-out infinite 0.5s,ringPulse2 4s ease-in-out infinite;}
+.orb-ring3{position:absolute;top:-155px;width:630px;height:630px;border-radius:50%;border:1px solid rgba(139,92,246,0.06);animation:orbFloat 7s ease-in-out infinite 1s;}
+.orb-glow-floor{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:500px;height:60px;background:radial-gradient(ellipse,rgba(109,40,217,0.25) 0%,transparent 70%);filter:blur(20px);animation:glowFloor 5s ease-in-out infinite;}
+@keyframes orbFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+@keyframes ringPulse{0%,100%{opacity:0.8;transform:scale(1);}50%{opacity:0.4;transform:scale(1.02);}}
+@keyframes ringPulse2{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:0.2;transform:scale(1.03);}}
+@keyframes glowFloor{0%,100%{opacity:0.7;}50%{opacity:1;}}
+
+/* ── NAV (fixed: solid backdrop so content never overlaps) ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;background:rgba(8,4,15,0.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:background 0.2s;}
+nav.scrolled{background:rgba(8,4,15,0.92);box-shadow:0 4px 24px rgba(0,0,0,0.4);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;width:100%;}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;}
+.logo-box{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;color:#fff;}
+.logo-txt{font-weight:800;font-size:0.95rem;color:#fff;letter-spacing:0.3px;}
+.nav-links{display:flex;gap:0.1rem;list-style:none;}
+.nav-links a{padding:7px 13px;text-decoration:none;color:var(--text2);font-size:0.81rem;font-weight:500;transition:color 0.2s,background 0.2s;border-radius:7px;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(139,92,246,0.1);}
+.nav-hire{padding:8px 20px;background:var(--purple);color:#fff;border-radius:8px;font-size:0.82rem;font-weight:700;text-decoration:none;transition:all 0.2s;box-shadow:0 0 16px var(--purple-glow);}
+.nav-hire:hover{background:var(--purple2);box-shadow:0 0 28px var(--purple-glow);transform:translateY(-1px);}
+.nav-burger{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+
+/* ── PAGES (top padding so nothing slides under the nav) ── */
+.pg{display:none;position:relative;z-index:1;animation:pgIn 0.4s ease both;padding-top:64px;}
+.pg.active{display:block;}
+@keyframes pgIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+/* ── HERO (with side photo) ── */
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1.4fr auto;gap:4rem;align-items:center;padding:3rem 2rem 4rem;max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:var(--purple-dim);border:1px solid var(--border2);border-radius:20px;font-size:0.72rem;font-weight:700;color:var(--purple);letter-spacing:0.5px;margin-bottom:1.5rem;animation:fadeDown 0.6s ease both;}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--purple);box-shadow:0 0 10px var(--purple-glow);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:none;}}
+.hero-name{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:1rem;animation:fadeUp 0.7s ease 0.1s both;}
+.hero-name .grad{background:linear-gradient(135deg,#c084fc,#8b5cf6,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.hero-headline{font-size:1rem;font-weight:600;color:var(--cyan);margin-bottom:0.5rem;text-shadow:0 0 12px var(--cyan-glow);animation:fadeUp 0.7s ease 0.18s both;}
+.hero-brand{font-size:0.86rem;color:var(--text3);font-style:italic;margin-bottom:1.5rem;animation:fadeUp 0.7s ease 0.22s both;}
+.hero-intro{font-size:0.92rem;color:var(--text2);max-width:520px;line-height:1.8;margin-bottom:2rem;animation:fadeUp 0.7s ease 0.28s both;}
+.hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.35s both;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;font-size:0.84rem;font-weight:700;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;font-family:inherit;letter-spacing:0.2px;}
+.btn-purple{background:var(--purple);color:#fff;box-shadow:0 0 20px var(--purple-glow);}
+.btn-purple:hover{background:var(--purple2);box-shadow:0 0 32px var(--purple-glow);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--text2);border:1.5px solid var(--border);}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);}
+.btn-outline{background:transparent;color:var(--purple);border:1.5px solid var(--border2);}
+.btn-outline:hover{background:var(--purple-dim);color:#fff;border-color:var(--purple);}
+.btn-sm{padding:6px 14px;font-size:0.76rem;}
+.hero-photo{width:240px;height:300px;border-radius:20px;background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(0,212,255,0.08));border:1px solid var(--border2);box-shadow:0 0 40px var(--purple-glow),0 0 80px rgba(0,212,255,0.08);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden;animation:fadeUp 0.8s ease 0.2s both;}
+.hero-photo::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:var(--purple-dim);}
+.hero-photo-ph{font-size:5rem;opacity:0.25;z-index:1;}
+.hero-photo-lbl{position:absolute;bottom:0;left:0;right:0;padding:0.9rem;font-size:0.7rem;color:var(--purple);text-align:center;background:linear-gradient(transparent,rgba(8,4,15,0.95));}
+.hero-stats{display:flex;gap:2.4rem;margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--border);animation:fadeUp 0.7s ease 0.4s both;}
+.stat-num{font-size:1.5rem;font-weight:900;color:#fff;}
+.stat-num span{color:var(--purple);text-shadow:0 0 10px var(--purple-glow);}
+.stat-label{font-size:0.72rem;color:var(--text2);margin-top:2px;letter-spacing:0.3px;}
+
+/* ── SECTION FRAMEWORK ── */
+.section{padding:5rem 0;position:relative;z-index:1;}
+.section.alt{background:rgba(255,255,255,0.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.sw{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.6rem;}
+.eyebrow::before{content:'';width:18px;height:2px;background:var(--purple);border-radius:1px;}
+.sec-title{font-size:2rem;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:0.4rem;}
+.sec-line{width:40px;height:3px;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:2px;margin:0.75rem 0 2.5rem;box-shadow:0 0 10px var(--purple-glow);}
+.sec-sub{color:var(--text2);font-size:0.9rem;line-height:1.8;max-width:560px;margin-bottom:2rem;}
+
+/* ── ABOUT PREVIEW ── */
+.about-preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.about-preview-text p{font-size:0.92rem;color:var(--text2);line-height:1.85;margin-bottom:1rem;}
+.value-props{display:flex;flex-direction:column;gap:1rem;}
+.value-prop{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:all 0.2s;}
+.value-prop:hover{border-color:var(--border2);transform:translateX(4px);}
+.vp-icon{width:38px;height:38px;border-radius:9px;background:var(--purple-dim);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.vp-title{font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.vp-sub{font-size:0.78rem;color:var(--text2);}
+
+/* ── EXPERIENCE TIMELINE ── */
+.exp-timeline{position:relative;padding-left:2.5rem;}
+.exp-timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--purple),var(--cyan),transparent);box-shadow:0 0 10px var(--purple-glow);}
+.exp-item{position:relative;margin-bottom:2rem;}
+.exp-dot{position:absolute;left:-2.5rem;top:8px;width:16px;height:16px;border-radius:50%;background:var(--purple);border:3px solid var(--bg);box-shadow:0 0 0 3px var(--purple-dim),0 0 12px var(--purple-glow);}
+.exp-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:0 14px 14px 0;padding:1.6rem;transition:all 0.25s;}
+.exp-card:hover{border-color:var(--border2);transform:translateX(5px);box-shadow:0 8px 30px rgba(0,0,0,0.4),0 0 20px var(--purple-dim);}
+.exp-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;}
+.exp-role{font-size:0.95rem;font-weight:800;color:#fff;}
+.exp-date{font-size:0.72rem;font-weight:700;color:var(--cyan);background:var(--cyan-dim);padding:3px 12px;border-radius:20px;border:1px solid rgba(0,212,255,0.2);white-space:nowrap;}
+.exp-org{font-size:0.82rem;color:var(--cyan);font-weight:600;margin-bottom:0.85rem;}
+.exp-desc{font-size:0.85rem;color:var(--text2);line-height:1.75;margin-bottom:0.85rem;}
+.exp-achs{display:flex;flex-direction:column;gap:5px;margin-bottom:0.9rem;}
+.exp-ach{font-size:0.83rem;color:var(--text2);padding-left:1.2rem;position:relative;}
+.exp-ach::before{content:'▸';position:absolute;left:0;color:var(--purple);}
+.exp-ach strong{color:#fff;font-weight:700;}
+.exp-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:0.5rem;}
+.exp-num{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:0.75rem;text-align:center;}
+.en-n{font-size:1.2rem;font-weight:900;color:var(--purple);}
+.en-l{font-size:0.66rem;color:var(--text3);margin-top:2px;letter-spacing:0.3px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.9rem;}
+.etag{padding:3px 11px;border-radius:20px;font-size:0.72rem;font-weight:600;background:var(--purple-dim);border:1px solid var(--border2);color:var(--purple);}
+.exp-ghost{opacity:0.55;border-style:dashed;}
+.exp-ghost .exp-role{color:var(--text2);}
+
+/* ── DOMAINS ── */
+.dom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.dom-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden;}
+.dom-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.dom-card:hover::before{transform:scaleX(1);}
+.dom-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.5),0 0 30px var(--purple-dim);}
+.dom-icon{font-size:1.8rem;margin-bottom:0.9rem;filter:drop-shadow(0 0 8px var(--purple-glow));}
+.dom-title{font-size:0.92rem;font-weight:800;color:#fff;margin-bottom:0.5rem;}
+.dom-desc{font-size:0.8rem;color:var(--text2);line-height:1.7;margin-bottom:1.1rem;}
+.dom-link{font-size:0.74rem;font-weight:700;color:var(--purple);display:inline-flex;align-items:center;gap:4px;transition:gap 0.2s;}
+.dom-card:hover .dom-link{gap:8px;}
+
+/* ── PROJECTS / PORTFOLIO ── */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;}
+.proj-card:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.5),0 0 30px var(--purple-dim);}
+.proj-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;border-bottom:1px solid var(--border);}
+.pt-a{background:linear-gradient(135deg,#1a0a2e,#2d1060);}
+.pt-b{background:linear-gradient(135deg,#0a1a2e,#0d3060);}
+.pt-c{background:linear-gradient(135deg,#1a0a1e,#3d0a50);}
+.pt-d{background:linear-gradient(135deg,#0a1a0a,#0d3520);}
+.pt-e{background:linear-gradient(135deg,#1a0a0a,#3d1010);}
+.pt-f{background:linear-gradient(135deg,#0a0a2e,#101060);}
+.pt-g{background:linear-gradient(135deg,#1a0a2e,#4d1080);}
+.proj-body{padding:1.25rem;}
+.proj-cat{font-size:0.66rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:0.35rem;}
+.proj-title{font-size:0.92rem;font-weight:800;color:#fff;margin-bottom:0.5rem;line-height:1.35;}
+.proj-desc{font-size:0.8rem;color:var(--text2);line-height:1.65;margin-bottom:0.9rem;}
+.proj-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;}
+.ppill{font-size:0.7rem;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--cyan-dim);border:1px solid rgba(0,212,255,0.12);color:var(--cyan);}
+.proj-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.proj-tools{display:flex;gap:4px;flex-wrap:wrap;}
+.ptool{font-size:0.68rem;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text2);}
+.proj-link{font-size:0.74rem;font-weight:700;color:var(--purple);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:gap 0.2s;cursor:pointer;}
+.proj-card:hover .proj-link{gap:8px;}
+
+/* ── SKILLS GRID ── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.skill-group{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color 0.2s;}
+.skill-group:hover{border-color:var(--border2);}
+.skill-group-title{font-size:0.74rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem;text-shadow:0 0 8px var(--cyan-glow);}
+.chips{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{padding:5px 12px;border-radius:20px;font-size:0.76rem;font-weight:500;background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text2);transition:all 0.15s;cursor:default;}
+.chip:hover{background:var(--purple-dim);border-color:var(--border2);color:var(--purple);}
+
+/* ── CERTS ── */
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.2s;}
+.cert-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 20px var(--purple-dim);}
+.cert-icon{width:42px;height:42px;border-radius:10px;background:var(--purple-dim);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:0.85rem;}
+.cert-name{font-size:0.86rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:0.3rem;}
+.cert-org{font-size:0.76rem;color:var(--cyan);font-weight:600;}
+.cert-yr{font-size:0.7rem;color:var(--text3);margin-top:2px;}
+.cert-tag{display:inline-block;margin-top:0.75rem;font-size:0.66rem;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--purple-dim);border:1px solid var(--border2);color:var(--purple);}
+
+/* ── ACHIEVEMENTS PREVIEW (small grid) ── */
+.ach-prev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;}
+.ach-prev-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem;display:flex;gap:0.85rem;align-items:flex-start;transition:all 0.2s;}
+.ach-prev-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.ach-prev-icon{font-size:1.3rem;flex-shrink:0;}
+.ach-prev-title{font-size:0.86rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.ach-prev-sub{font-size:0.76rem;color:var(--text2);}
+
+/* ── FULL ACHIEVEMENTS PAGE ── */
+.ach-full-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;}
+.ach-full-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:all 0.2s;}
+.ach-full-card:hover{border-color:var(--border2);box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 20px var(--purple-dim);}
+.ach-cat{font-size:0.76rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:1.1rem;display:flex;align-items:center;gap:0.5rem;}
+.ach-item{display:flex;gap:0.85rem;align-items:flex-start;padding:0.8rem 0;border-top:1px solid var(--border);}
+.ach-item:first-of-type{border-top:none;padding-top:0;}
+.ach-it-icon{font-size:1.4rem;flex-shrink:0;width:36px;text-align:center;}
+.ach-it-title{font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:3px;}
+.ach-it-sub{font-size:0.78rem;color:var(--text2);line-height:1.65;}
+
+/* ── ABOUT PAGE ── */
+.story-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.story-text p{font-size:0.92rem;color:var(--text2);line-height:1.85;margin-bottom:1rem;}
+.about-side-title{font-size:0.74rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;}
+.edu-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin-bottom:0.9rem;transition:all 0.2s;}
+.edu-card:hover{border-color:var(--border2);transform:translateX(4px);}
+.edu-deg{font-size:0.92rem;font-weight:700;color:#fff;}
+.edu-inst{font-size:0.82rem;color:var(--cyan);font-weight:600;margin-top:2px;}
+.edu-yr{font-size:0.72rem;color:var(--text3);margin-top:4px;}
+.lead-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.9rem;margin-bottom:2rem;}
+.lead-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;transition:all 0.2s;}
+.lead-card:hover{border-color:var(--border2);}
+.lead-role{font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.lead-org{font-size:0.78rem;color:var(--cyan);}
+.vision-card{background:linear-gradient(135deg,rgba(139,92,246,0.06),rgba(0,212,255,0.03));border:1px solid var(--border2);border-radius:16px;padding:2rem;margin-top:1.5rem;box-shadow:0 0 30px var(--purple-dim);}
+.vision-card p{font-size:0.92rem;color:var(--text);line-height:1.85;font-style:italic;}
+
+/* ── FILTER TABS ── */
+.filter-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.ftab{padding:7px 18px;border-radius:20px;font-size:0.78rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--text2);transition:all 0.15s;font-family:inherit;}
+.ftab:hover,.ftab.active{background:var(--purple);border-color:var(--purple);color:#fff;box-shadow:0 0 14px var(--purple-glow);}
+
+/* ── RESUME PAGE ── */
+.resume-actions{display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+.resume-view{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;box-shadow:0 8px 30px rgba(0,0,0,0.3);}
+.resume-name{font-size:1.6rem;font-weight:900;color:#fff;letter-spacing:-0.5px;}
+.resume-headline{font-size:0.92rem;color:var(--cyan);font-weight:600;margin:0.4rem 0 0.75rem;}
+.resume-contact{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:0.78rem;color:var(--text2);border-bottom:1px solid var(--border);padding-bottom:1.5rem;margin-bottom:1.5rem;}
+.resume-sec{margin-bottom:1.5rem;}
+.resume-sec-title{font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
+.resume-exp-head{display:flex;justify-content:space-between;font-weight:700;color:#fff;font-size:0.9rem;flex-wrap:wrap;gap:0.5rem;}
+.resume-exp-sub{font-size:0.82rem;color:var(--cyan);margin-top:2px;margin-bottom:0.4rem;}
+.resume-list{padding-left:1.2rem;}
+.resume-list li{font-size:0.82rem;color:var(--text2);margin-bottom:4px;line-height:1.6;}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start;}
+.contact-left h3{font-size:1.6rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:0.75rem;letter-spacing:-0.5px;}
+.contact-left h3 span{background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.contact-left p{font-size:0.88rem;color:var(--text2);line-height:1.8;margin-bottom:1.75rem;}
+.ci-list{display:flex;flex-direction:column;gap:0.7rem;}
+.ci-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:12px;text-decoration:none;transition:all 0.2s;color:inherit;}
+.ci-item:hover{border-color:var(--border2);transform:translateX(4px);}
+.ci-icon{width:38px;height:38px;border-radius:9px;background:var(--purple-dim);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ci-label{font-size:0.66rem;color:var(--text3);letter-spacing:0.5px;text-transform:uppercase;}
+.ci-val{font-size:0.84rem;font-weight:600;color:#fff;margin-top:1px;}
+.contact-form{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:18px;padding:2.25rem;backdrop-filter:blur(10px);}
+.form-title{font-size:0.95rem;font-weight:800;color:#fff;margin-bottom:1.5rem;}
+.fg{margin-bottom:1.1rem;}
+.fl{font-size:0.74rem;font-weight:600;color:var(--text2);display:block;margin-bottom:6px;}
+.fi,.ft{width:100%;background:rgba(255,255,255,0.04);border:1.5px solid var(--border);border-radius:9px;padding:11px 14px;color:var(--text);font-size:0.85rem;outline:none;font-family:inherit;transition:all 0.2s;}
+.fi:focus,.ft:focus{border-color:var(--border2);box-shadow:0 0 0 3px var(--purple-dim);background:rgba(255,255,255,0.06);}
+.ft{height:120px;resize:vertical;}
+.form-btn{width:100%;padding:12px;background:var(--purple);color:#fff;border:none;border-radius:9px;font-size:0.86rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;box-shadow:0 0 18px var(--purple-glow);}
+.form-btn:hover{background:var(--purple2);box-shadow:0 0 30px var(--purple-glow);transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;background:rgba(8,4,15,0.8);border-top:1px solid var(--border);padding:2rem 0;backdrop-filter:blur(10px);}
+.foot-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.foot-logo{font-weight:800;font-size:0.92rem;color:#fff;}
+.foot-logo span{color:var(--purple);}
+.foot-links{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap;}
+.foot-links a{font-size:0.78rem;color:var(--text3);text-decoration:none;transition:color 0.2s;cursor:pointer;}
+.foot-links a:hover{color:var(--purple);}
+.foot-copy{font-size:0.74rem;color:var(--text3);}
+
+/* ── CTA ── */
+.cta-section{position:relative;z-index:1;padding:5rem 0;text-align:center;border-top:1px solid var(--border);}
+.cta-section h2{font-size:2.4rem;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:0.5rem;}
+.cta-section h2 span{background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-section p{color:var(--text2);font-size:0.92rem;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;}
+.cta-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.in{opacity:1;transform:none;}
+.d1{transition-delay:0.05s;}.d2{transition-delay:0.11s;}.d3{transition-delay:0.17s;}.d4{transition-delay:0.23s;}.d5{transition-delay:0.29s;}.d6{transition-delay:0.35s;}
+
+.section-foot{margin-top:2rem;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:2rem;padding-top:2rem;}
+  .hero-photo{width:200px;height:240px;justify-self:start;}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;}
+  .dom-grid,.cert-grid,.skills-grid{grid-template-columns:1fr 1fr;}
+  .about-preview-grid,.story-grid,.contact-grid{grid-template-columns:1fr;}
+  .proj-grid,.ach-prev-grid,.ach-full-grid,.lead-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(8,4,15,0.97);backdrop-filter:blur(18px);flex-direction:column;padding:1rem 2rem;border-bottom:1px solid var(--border);gap:0.25rem;}
+  .nav-links.open{display:flex;}
+  .nav-burger{display:block;}
+  .nav-hire{display:none;}
+  .resume-view{padding:1.5rem;}
+}
+@media(max-width:580px){
+  .dom-grid,.cert-grid,.skills-grid{grid-template-columns:1fr;}
+  .sec-title{font-size:1.6rem;}
+  .cta-section h2{font-size:1.8rem;}
+  .nav-inner{padding:0 1.25rem;}
+  .sw{padding:0 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- STAR CANVAS -->
+<canvas id="starCanvas"></canvas>
+
+<!-- ORB -->
+<div class="orb-wrap">
+  <div class="orb-ring3"></div>
+  <div class="orb-ring2"></div>
+  <div class="orb-ring1"></div>
+  <div class="orb-outer"></div>
+  <div class="orb-glow-floor"></div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="showPage('home');return false;">
+      <div class="logo-box">RS</div>
+      <span class="logo-txt">Rohit Suman</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a class="active" data-page="home" onclick="showPage('home');return false;">Home</a></li>
+      <li><a data-page="about" onclick="showPage('about');return false;">About</a></li>
+      <li><a data-page="portfolio" onclick="showPage('portfolio');return false;">Portfolio</a></li>
+      <li><a data-page="certifications" onclick="showPage('certifications');return false;">Certifications</a></li>
+      <li><a data-page="achievements" onclick="showPage('achievements');return false;">Achievements</a></li>
+      <li><a data-page="experience" onclick="showPage('experience');return false;">Experience</a></li>
+      <li><a data-page="resume" onclick="showPage('resume');return false;">Resume</a></li>
+      <li><a data-page="contact" onclick="showPage('contact');return false;">Contact</a></li>
+    </ul>
+    <a href="mailto:rohitsuman688@gmail.com" class="nav-hire">Hire Me</a>
+    <button class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- ══════ HOME ══════ -->
+<div id="pg-home" class="pg active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow"><div class="hero-dot"></div><span>Open to Internships &amp; Opportunities</span></div>
+      <h1 class="hero-name">Rohit<br><span class="grad">Suman.</span></h1>
+      <div class="hero-headline">Data-Driven Analyst | Marketing, Finance &amp; Supply Chain</div>
+      <div class="hero-brand">Bridging Data, Strategy, and Business Impact</div>
+      <p class="hero-intro">I'm an MBA Business Analytics student passionate about transforming data into actionable business insights. My work spans marketing, finance, operations, and business intelligence — applying analytical thinking to solve complex challenges.</p>
+      <div class="hero-btns">
+        <a class="btn btn-purple" onclick="showPage('portfolio');return false;">View Portfolio →</a>
+        <a href="Rohit_Suman_ATS_Resume.docx" download class="btn btn-outline">⬇ Resume</a>
+        <a href="https://www.linkedin.com/in/rohit-suman-62681315a/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">4<span>+</span></div><div class="stat-label">Analytics Projects</div></div>
+        <div><div class="stat-num">6<span>+</span></div><div class="stat-label">Certifications</div></div>
+        <div><div class="stat-num">1<span>st</span></div><div class="stat-label">IIT Madras Winner</div></div>
+        <div><div class="stat-num">3<span>+</span></div><div class="stat-label">Internships</div></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-ph">👤</div>
+      <div class="hero-photo-lbl">Add your professional photo</div>
+    </div>
+  </section>
+
+  <!-- ABOUT PREVIEW -->
+  <section class="section alt">
+    <div class="sw">
+      <div class="eyebrow fade-up">Who I Am</div>
+      <div class="sec-title fade-up d1">A Versatile Analytics Professional</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="about-preview-grid">
+        <div class="about-preview-text fade-up d1">
+          <p>I'm Rohit Suman, an MBA candidate in Business Analytics at Symbiosis Institute of Business Management, Bengaluru. My approach to analytics goes beyond numbers — I connect data to real business outcomes across marketing, finance, and operations.</p>
+          <p>Whether it's building an ROI dashboard, analyzing customer engagement patterns, or running statistical HR analysis, I bring structured thinking and clear communication to every problem.</p>
+          <a class="btn btn-outline" style="margin-top:0.5rem;" onclick="showPage('about');return false;">Read My Story →</a>
+        </div>
+        <div class="value-props fade-up d2">
+          <div class="value-prop"><div class="vp-icon">📊</div><div><div class="vp-title">Data Analysis & Visualization</div><div class="vp-sub">Power BI, Tableau, Excel — turning raw data into visual stories</div></div></div>
+          <div class="value-prop"><div class="vp-icon">💡</div><div><div class="vp-title">Business Strategy</div><div class="vp-sub">Connecting analytics insights to real business decisions</div></div></div>
+          <div class="value-prop"><div class="vp-icon">📈</div><div><div class="vp-title">Multi-Domain Expertise</div><div class="vp-sub">Marketing, Finance, Operations, HR Analytics</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Professional Journey</div>
+      <div class="sec-title fade-up d1">Experience</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="exp-timeline">
+        <div class="exp-item fade-up d1">
+          <div class="exp-dot"></div>
+          <div class="exp-card">
+            <div class="exp-head"><div class="exp-role">E-Commerce Data Analyst Intern</div><div class="exp-date">Jan – Feb 2025</div></div>
+            <div class="exp-org">Shivam Mishra Digital OPC Pvt Ltd · Remote</div>
+            <div class="exp-desc">Analyzed sales and marketing data across 100+ SKUs on Amazon, optimized advertising campaigns, and built performance dashboards to support marketing and operations decision-making.</div>
+            <div class="exp-achs">
+              <div class="exp-ach">Increased ROI by <strong>15%</strong> and reduced ad spend by <strong>10%</strong> on 40+ ASINs</div>
+              <div class="exp-ach">Boosted organic traffic by <strong>20%</strong> and sales by <strong>12%</strong> via SEO optimization</div>
+              <div class="exp-ach">Resolved <strong>30+ customer queries</strong>, improving seller rating</div>
+            </div>
+            <div class="exp-tags"><span class="etag">Amazon PPC</span><span class="etag">SEO Analytics</span><span class="etag">Excel</span><span class="etag">KPI Reporting</span></div>
+          </div>
+        </div>
+        <div class="exp-item fade-up d2">
+          <div class="exp-dot" style="background:var(--text3);box-shadow:none;"></div>
+          <div class="exp-card exp-ghost">
+            <div class="exp-head"><div class="exp-role">Summer Intern</div><div class="exp-date">Coming Soon</div></div>
+            <div class="exp-org">Outlook Group · Placeholder</div>
+            <div class="exp-desc">Add your role, responsibilities, and key achievements from your Outlook Group internship here.</div>
+          </div>
+        </div>
+        <div class="exp-item fade-up d3">
+          <div class="exp-dot" style="background:var(--text3);box-shadow:none;"></div>
+          <div class="exp-card exp-ghost">
+            <div class="exp-head"><div class="exp-role">Project Management Intern</div><div class="exp-date">Coming Soon</div></div>
+            <div class="exp-org">Pehchaan The Street School · Placeholder</div>
+            <div class="exp-desc">Add your role, project management responsibilities, and community impact here.</div>
+          </div>
+        </div>
+      </div>
+      <div class="section-foot fade-up d4"><a class="btn btn-outline" onclick="showPage('experience');return false;">View Full Experience →</a></div>
+    </div>
+  </section>
+
+  <!-- DOMAINS -->
+  <section class="section alt">
+    <div class="sw">
+      <div class="eyebrow fade-up">What I Do</div>
+      <div class="sec-title fade-up d1">Domain Expertise</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="dom-grid">
+        <div class="dom-card fade-up d1" onclick="showPage('portfolio')"><div class="dom-icon">📊</div><div class="dom-title">Business Analytics</div><div class="dom-desc">KPI tracking, dashboards, and performance monitoring to power data-driven strategy across business functions.</div><span class="dom-link">Explore Projects →</span></div>
+        <div class="dom-card fade-up d2" onclick="showPage('portfolio')"><div class="dom-icon">💰</div><div class="dom-title">Financial Analytics</div><div class="dom-desc">Portfolio risk analysis, financial modeling, forecasting, and investment performance evaluation.</div><span class="dom-link">Explore Projects →</span></div>
+        <div class="dom-card fade-up d3" onclick="showPage('portfolio')"><div class="dom-icon">📣</div><div class="dom-title">Marketing Analytics</div><div class="dom-desc">Campaign ROI, customer segmentation, engagement metrics, and conversion optimization.</div><span class="dom-link">Explore Projects →</span></div>
+        <div class="dom-card fade-up d4" onclick="showPage('portfolio')"><div class="dom-icon">🔗</div><div class="dom-title">Operations & Supply Chain</div><div class="dom-desc">PERT/CPM analysis, operations research, process optimization, and supply-chain performance.</div><span class="dom-link">Explore Projects →</span></div>
+        <div class="dom-card fade-up d5" onclick="showPage('portfolio')"><div class="dom-icon">🗄️</div><div class="dom-title">Data Warehousing & BI</div><div class="dom-desc">Power BI dashboards, SQL data modeling, interactive reports, and enterprise-grade BI solutions.</div><span class="dom-link">Explore Projects →</span></div>
+        <div class="dom-card fade-up d6" onclick="showPage('portfolio')"><div class="dom-icon">🏎️</div><div class="dom-title">Passion Projects & Sports</div><div class="dom-desc">Formula 1 performance analysis, European football dashboards, and sports data storytelling.</div><span class="dom-link">Explore Projects →</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Featured Work</div>
+      <div class="sec-title fade-up d1">Projects</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="proj-grid">
+        <div class="proj-card fade-up d1"><div class="proj-thumb pt-a">📱</div><div class="proj-body"><div class="proj-cat">BI · Marketing</div><div class="proj-title">Blinkit Marketing Dashboard</div><div class="proj-desc">Power BI dashboard tracking 26M impressions, 3M clicks & 264K conversions across App, Email, SMS & Social.</div><div class="proj-pills"><span class="ppill">26M Impressions</span><span class="ppill">3M Clicks</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Power BI</span><span class="ptool">DAX</span></div><a class="proj-link" onclick="showPage('portfolio');return false;">Case Study →</a></div></div></div>
+        <div class="proj-card fade-up d2"><div class="proj-thumb pt-g">🥇</div><div class="proj-body"><div class="proj-cat">🏆 IIT Madras Winner 2026</div><div class="proj-title">Dataverse: Customer Engagement</div><div class="proj-desc">1st place — built the EEQS framework to identify high-risk segments and deliver platform-level strategic insights.</div><div class="proj-pills"><span class="ppill">1st Place</span><span class="ppill">National Level</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Strategy</span><span class="ptool">Modeling</span></div><a class="proj-link" onclick="showPage('portfolio');return false;">Case Study →</a></div></div></div>
+        <div class="proj-card fade-up d3"><div class="proj-thumb pt-e">🏎️</div><div class="proj-body"><div class="proj-cat">Sports Analytics</div><div class="proj-title">Formula 1 Performance Analysis</div><div class="proj-desc">F1 race data — driver performance, lap-time trends, and pit-stop strategy analysis across seasons.</div><div class="proj-pills"><span class="ppill">Multi-season</span><span class="ppill">Driver Analytics</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Python</span><span class="ptool">Tableau</span></div><a class="proj-link" onclick="showPage('portfolio');return false;">Case Study →</a></div></div></div>
+        <div class="proj-card fade-up d4"><div class="proj-thumb pt-f">📈</div><div class="proj-body"><div class="proj-cat">Financial Analytics</div><div class="proj-title">Portfolio Risk Analysis</div><div class="proj-desc">Financial portfolio risk model — asset allocation, volatility, and return optimization using statistical modeling.</div><div class="proj-pills"><span class="ppill">Risk Modeling</span><span class="ppill">Asset Allocation</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Excel</span><span class="ptool">Finance</span></div><a class="proj-link" onclick="showPage('portfolio');return false;">Case Study →</a></div></div></div>
+      </div>
+      <div class="section-foot fade-up d5"><a class="btn btn-outline" onclick="showPage('portfolio');return false;">View All Projects →</a></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section alt">
+    <div class="sw">
+      <div class="eyebrow fade-up">Toolkit</div>
+      <div class="sec-title fade-up d1">Skills &amp; Tools</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="skills-grid">
+        <div class="skill-group fade-up d1">
+          <div class="skill-group-title">📊 Analytics</div>
+          <div class="chips"><span class="chip">Data Analysis</span><span class="chip">Visualization</span><span class="chip">EDA</span><span class="chip">Data Cleaning</span><span class="chip">Forecasting</span><span class="chip">Business Analysis</span><span class="chip">Problem Solving</span></div>
+        </div>
+        <div class="skill-group fade-up d2">
+          <div class="skill-group-title">🛠️ Tools</div>
+          <div class="chips"><span class="chip">Excel</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">R</span><span class="chip">SPSS</span><span class="chip">Python</span><span class="chip">SQL</span></div>
+        </div>
+        <div class="skill-group fade-up d3">
+          <div class="skill-group-title">💼 Domain</div>
+          <div class="chips"><span class="chip">Marketing Analytics</span><span class="chip">Financial Analysis</span><span class="chip">Portfolio Risk</span><span class="chip">Operations Research</span><span class="chip">Supply Chain</span><span class="chip">HR Analytics</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS PREVIEW -->
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Credentials</div>
+      <div class="sec-title fade-up d1">Certifications</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="cert-grid">
+        <div class="cert-card fade-up d1"><div class="cert-icon">📊</div><div class="cert-name">Data Insights & Visualization</div><div class="cert-org">Grant Thornton Bharat</div><div class="cert-yr">2025</div><span class="cert-tag">Analytics</span></div>
+        <div class="cert-card fade-up d2"><div class="cert-icon">🔵</div><div class="cert-name">Tableau BI Analyst Professional</div><div class="cert-org">Coursera</div><div class="cert-yr">2024</div><span class="cert-tag">Technology</span></div>
+        <div class="cert-card fade-up d3"><div class="cert-icon">🗄️</div><div class="cert-name">SQL for Data Analysis</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Technology</span></div>
+      </div>
+      <div class="section-foot fade-up d4"><a class="btn btn-outline" onclick="showPage('certifications');return false;">View All Certifications →</a></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS PREVIEW -->
+  <section class="section alt">
+    <div class="sw">
+      <div class="eyebrow fade-up">Recognition</div>
+      <div class="sec-title fade-up d1">Achievements</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="ach-prev-grid">
+        <div class="ach-prev-card fade-up d1"><div class="ach-prev-icon">🏆</div><div><div class="ach-prev-title">Dataverse Winner — IIT Madras 2026</div><div class="ach-prev-sub">1st place in national-level business analytics case competition</div></div></div>
+        <div class="ach-prev-card fade-up d2"><div class="ach-prev-icon">📊</div><div><div class="ach-prev-title">Member — DATALYTICS Club, SIBM-B</div><div class="ach-prev-sub">Active analytics club at Symbiosis, Bengaluru</div></div></div>
+        <div class="ach-prev-card fade-up d3"><div class="ach-prev-icon">🎓</div><div><div class="ach-prev-title">MBA Business Analytics</div><div class="ach-prev-sub">SIBM-B, Bengaluru · 2025–2027</div></div></div>
+        <div class="ach-prev-card fade-up d4"><div class="ach-prev-icon">📈</div><div><div class="ach-prev-title">15% ROI Improvement</div><div class="ach-prev-sub">Amazon PPC optimization at e-commerce internship</div></div></div>
+      </div>
+      <div class="section-foot fade-up d5"><a class="btn btn-outline" onclick="showPage('achievements');return false;">View All Achievements →</a></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="sw" style="max-width:580px;">
+      <h2>Let's Turn Data<br><span>Into Decisions</span></h2>
+      <p>Open to internships, freelance analytics projects, and collaborations.</p>
+      <div class="cta-btns">
+        <a href="mailto:rohitsuman688@gmail.com" class="btn btn-purple">📧 Email Me</a>
+        <a class="btn btn-ghost" onclick="showPage('contact');return false;">Contact Page →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ ABOUT ══════ -->
+<div id="pg-about" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">About Me</div>
+      <div class="sec-title fade-up d1">My Story</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="story-grid">
+        <div class="story-text fade-up d1">
+          <p>I'm Rohit Suman, an MBA candidate specializing in Business Analytics at Symbiosis Institute of Business Management, Bengaluru. My journey into analytics began with a curiosity for understanding how data shapes decisions — from marketing campaigns to financial portfolios to supply chains.</p>
+          <p>Growing up in Jaipur, I pursued a B.Sc. in Science before transitioning into business — where I discovered my passion for bridging quantitative thinking with strategic insight. That intersection — where data meets decision-making — is where I thrive.</p>
+          <p>I've applied this thinking across real-world projects: analyzing football performance with Tableau, building marketing dashboards in Power BI, winning the IIT Madras Dataverse 2026 case competition, and delivering measurable results during my e-commerce internship.</p>
+          <p>My goal is to become a versatile analytics professional who can operate across domains — not siloed in one function, but capable of driving impact across the entire business landscape.</p>
+        </div>
+        <div class="fade-up d2">
+          <div class="about-side-title">Education</div>
+          <div class="edu-card"><div class="edu-deg">MBA — Business Analytics</div><div class="edu-inst">Symbiosis Institute of Business Management, Bengaluru</div><div class="edu-yr">2025 – 2027</div></div>
+          <div class="edu-card"><div class="edu-deg">B.Sc. — Science</div><div class="edu-inst">S.S. Jain Subodh P.G. Autonomous College, Jaipur</div><div class="edu-yr">Completed</div></div>
+        </div>
+      </div>
+
+      <div class="about-side-title fade-up">Leadership &amp; Activities</div>
+      <div class="lead-grid">
+        <div class="lead-card fade-up d1"><div class="lead-role">Member — DATALYTICS Club</div><div class="lead-org">SIBM-B, Bengaluru · 2025</div></div>
+        <div class="lead-card fade-up d2"><div class="lead-role">Case Competition Participant</div><div class="lead-org">Multiple national-level competitions</div></div>
+        <div class="lead-card fade-up d3"><div class="lead-role">Project Management Intern</div><div class="lead-org">Pehchaan The Street School (Placeholder)</div></div>
+        <div class="lead-card fade-up d4"><div class="lead-role">Summer Intern</div><div class="lead-org">Outlook Group (Placeholder)</div></div>
+      </div>
+
+      <div class="vision-card fade-up">
+        <div class="about-side-title" style="margin-bottom:0.5rem;">Career Vision</div>
+        <p>"I aspire to become a data strategist who bridges the gap between analytics and executive decision-making. My goal is to work at the intersection of data, strategy, and business — helping organizations harness analytics to drive growth, efficiency, and competitive advantage across every function."</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ PORTFOLIO ══════ -->
+<div id="pg-portfolio" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">My Work</div>
+      <div class="sec-title fade-up d1">Portfolio</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="filter-tabs fade-up d3">
+        <button class="ftab active" onclick="filterP('all',this)">All Projects</button>
+        <button class="ftab" onclick="filterP('bi',this)">Business Intelligence</button>
+        <button class="ftab" onclick="filterP('finance',this)">Financial</button>
+        <button class="ftab" onclick="filterP('marketing',this)">Marketing</button>
+        <button class="ftab" onclick="filterP('ops',this)">Operations</button>
+        <button class="ftab" onclick="filterP('hr',this)">HR Analytics</button>
+        <button class="ftab" onclick="filterP('sports',this)">Sports</button>
+      </div>
+      <div class="proj-grid" id="portGrid">
+        <div class="proj-card" data-cat="bi marketing"><div class="proj-thumb pt-a">📱</div><div class="proj-body"><div class="proj-cat">BI · Marketing</div><div class="proj-title">Blinkit Marketing &amp; Customer Dashboard</div><div class="proj-desc">Interactive Power BI dashboard tracking 26M impressions, 3M clicks, 264K conversions across App, Email, SMS &amp; Social.</div><div class="proj-pills"><span class="ppill">26M Impressions</span><span class="ppill">3M Clicks</span><span class="ppill">264K Conversions</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Power BI</span><span class="ptool">DAX</span></div></div></div></div>
+        <div class="proj-card" data-cat="bi hr"><div class="proj-thumb pt-c">👥</div><div class="proj-body"><div class="proj-cat">HR Analytics · Statistics</div><div class="proj-title">Employee Performance &amp; Productivity Analysis</div><div class="proj-desc">Applied T-test, ANOVA, Chi-square and regression modeling to identify key drivers of employee performance.</div><div class="proj-pills"><span class="ppill">3 Stat Tests</span><span class="ppill">Regression</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Excel</span><span class="ptool">ANOVA</span></div></div></div></div>
+        <div class="proj-card" data-cat="marketing bi"><div class="proj-thumb pt-g">🥇</div><div class="proj-body"><div class="proj-cat">🏆 IIT Madras Winner</div><div class="proj-title">Dataverse: Customer Engagement Analysis</div><div class="proj-desc">1st place — built EEQS framework to identify high-risk customer segments &amp; deliver strategic insights.</div><div class="proj-pills"><span class="ppill">1st Place</span><span class="ppill">EEQS Framework</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Modeling</span><span class="ptool">Strategy</span></div></div></div></div>
+        <div class="proj-card" data-cat="sports bi"><div class="proj-thumb pt-d">⚽</div><div class="proj-body"><div class="proj-cat">Sports · Visualization</div><div class="proj-title">European Football Performance Dashboard</div><div class="proj-desc">25,000+ matches &amp; 10,000+ players analyzed. Interactive Tableau dashboards with KPIs &amp; trend analysis.</div><div class="proj-pills"><span class="ppill">25K+ Matches</span><span class="ppill">10K+ Players</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Tableau</span><span class="ptool">EDA</span></div></div></div></div>
+        <div class="proj-card" data-cat="sports"><div class="proj-thumb pt-e">🏎️</div><div class="proj-body"><div class="proj-cat">Sports Analytics</div><div class="proj-title">Formula 1 Performance Analysis</div><div class="proj-desc">F1 race data — driver performance, lap time trends &amp; pit stop strategies across seasons.</div><div class="proj-pills"><span class="ppill">Multi-season</span><span class="ppill">Driver Analytics</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Python</span><span class="ptool">Tableau</span></div></div></div></div>
+        <div class="proj-card" data-cat="finance"><div class="proj-thumb pt-f">📈</div><div class="proj-body"><div class="proj-cat">Financial Analytics</div><div class="proj-title">Portfolio Risk Analysis</div><div class="proj-desc">Financial portfolio risk model — asset allocation, volatility &amp; return optimization.</div><div class="proj-pills"><span class="ppill">Risk Modeling</span><span class="ppill">Asset Allocation</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Excel</span><span class="ptool">Finance</span></div></div></div></div>
+        <div class="proj-card" data-cat="ops"><div class="proj-thumb pt-b">⏱️</div><div class="proj-body"><div class="proj-cat">Operations Research</div><div class="proj-title">PERT/CPM Analysis</div><div class="proj-desc">PERT/CPM network analysis — project timeline optimization and critical path identification.</div><div class="proj-pills"><span class="ppill">Critical Path</span><span class="ppill">Optimization</span></div><div class="proj-foot"><div class="proj-tools"><span class="ptool">Excel</span><span class="ptool">Ops Research</span></div></div></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ CERTIFICATIONS ══════ -->
+<div id="pg-certifications" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Credentials</div>
+      <div class="sec-title fade-up d1">Certifications</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="cert-grid">
+        <div class="cert-card fade-up d1"><div class="cert-icon">📊</div><div class="cert-name">Data Insights &amp; Visualization Certification</div><div class="cert-org">Grant Thornton Bharat</div><div class="cert-yr">2025</div><span class="cert-tag">Analytics</span></div>
+        <div class="cert-card fade-up d2"><div class="cert-icon">🔵</div><div class="cert-name">Tableau BI Analyst Professional Certificate</div><div class="cert-org">Coursera</div><div class="cert-yr">2024</div><span class="cert-tag">Technology</span></div>
+        <div class="cert-card fade-up d3"><div class="cert-icon">👁️</div><div class="cert-name">Data Visualisation: Empowering Business</div><div class="cert-org">Forage</div><div class="cert-yr">2025</div><span class="cert-tag">Analytics</span></div>
+        <div class="cert-card fade-up d4"><div class="cert-icon">🗄️</div><div class="cert-name">SQL for Data Analysis</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Technology</span></div>
+        <div class="cert-card fade-up d5"><div class="cert-icon">⚡</div><div class="cert-name">Power BI Essential Training (2024)</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Technology</span></div>
+        <div class="cert-card fade-up d6"><div class="cert-icon">💰</div><div class="cert-name">Financial Portfolio Management Fundamentals</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Finance</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ ACHIEVEMENTS ══════ -->
+<div id="pg-achievements" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Recognition</div>
+      <div class="sec-title fade-up d1">Achievements</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="ach-full-grid">
+        <div class="ach-full-card fade-up d1">
+          <div class="ach-cat">🏆 Competitions</div>
+          <div class="ach-item"><div class="ach-it-icon">🥇</div><div><div class="ach-it-title">Dataverse Winner — IIT Madras 2026</div><div class="ach-it-sub">1st place in a national-level case competition that challenges participants to transform complex datasets into actionable business insights and strategic recommendations.</div></div></div>
+        </div>
+        <div class="ach-full-card fade-up d2">
+          <div class="ach-cat">🎓 Academic</div>
+          <div class="ach-item"><div class="ach-it-icon">📚</div><div><div class="ach-it-title">MBA Business Analytics — SIBM-B</div><div class="ach-it-sub">Pursuing MBA specializing in Business Analytics at Symbiosis Institute of Business Management, Bengaluru (2025–2027).</div></div></div>
+          <div class="ach-item"><div class="ach-it-icon">🎓</div><div><div class="ach-it-title">B.Sc. (Science) — Subodh College, Jaipur</div><div class="ach-it-sub">Completed undergraduate in Science from S.S. Jain Subodh P.G. Autonomous College, Jaipur.</div></div></div>
+        </div>
+        <div class="ach-full-card fade-up d3">
+          <div class="ach-cat">👥 Leadership &amp; Clubs</div>
+          <div class="ach-item"><div class="ach-it-icon">📊</div><div><div class="ach-it-title">Member — DATALYTICS Club, SIBM-B</div><div class="ach-it-sub">Active member of the analytics club at Symbiosis Institute, participating in data challenges and knowledge-sharing sessions.</div></div></div>
+          <div class="ach-item"><div class="ach-it-icon">🤝</div><div><div class="ach-it-title">Project Management Intern — Pehchaan The Street School</div><div class="ach-it-sub">Contributed to social impact project management and community outreach initiatives. (Add details here)</div></div></div>
+        </div>
+        <div class="ach-full-card fade-up d4">
+          <div class="ach-cat">💼 Professional Achievements</div>
+          <div class="ach-item"><div class="ach-it-icon">📈</div><div><div class="ach-it-title">15% ROI Improvement — E-Commerce Internship</div><div class="ach-it-sub">Optimized Amazon PPC campaigns for 40+ ASINs, increasing ROI by 15% and reducing ad spend by 10%.</div></div></div>
+          <div class="ach-item"><div class="ach-it-icon">🚀</div><div><div class="ach-it-title">20% Organic Traffic Growth</div><div class="ach-it-sub">Improved product listings via SEO and keyword analysis, boosting organic traffic by 20% and sales by 12%.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ EXPERIENCE ══════ -->
+<div id="pg-experience" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Career</div>
+      <div class="sec-title fade-up d1">Professional Experience</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="exp-timeline">
+        <div class="exp-item fade-up d1">
+          <div class="exp-dot"></div>
+          <div class="exp-card">
+            <div class="exp-head"><div class="exp-role">E-Commerce Data Analyst Intern</div><div class="exp-date">Jan – Feb 2025</div></div>
+            <div class="exp-org">Shivam Mishra Digital OPC Pvt Ltd · Remote</div>
+            <div class="exp-desc">Worked as an e-commerce data analyst intern — responsible for sales data analysis, Amazon PPC campaign optimization, product-listing SEO improvement, and performance reporting for 100+ SKUs across multiple categories.</div>
+            <div class="about-side-title" style="margin-bottom:0.6rem;font-size:0.7rem;">Key Responsibilities</div>
+            <div class="exp-achs">
+              <div class="exp-ach">Analyzed sales data for <strong>100+ SKUs</strong> to identify performance trends and support data-driven decisions</div>
+              <div class="exp-ach">Optimized Amazon PPC ad campaigns for <strong>40+ ASINs</strong> using data analysis and A/B testing</div>
+              <div class="exp-ach">Improved product listings via SEO keyword research and competitor analysis</div>
+              <div class="exp-ach">Built reports and tracked KPIs to support marketing and operations teams</div>
+              <div class="exp-ach">Resolved <strong>30+ customer queries</strong>, improving seller rating &amp; customer satisfaction</div>
+            </div>
+            <div class="about-side-title" style="margin:1.1rem 0 0.6rem;font-size:0.7rem;">Quantified Achievements</div>
+            <div class="exp-nums">
+              <div class="exp-num"><div class="en-n">+15%</div><div class="en-l">ROI Increase</div></div>
+              <div class="exp-num"><div class="en-n">-10%</div><div class="en-l">Ad Spend Saved</div></div>
+              <div class="exp-num"><div class="en-n">+20%</div><div class="en-l">Organic Traffic</div></div>
+            </div>
+            <div class="exp-tags"><span class="etag">Amazon PPC</span><span class="etag">SEO Analytics</span><span class="etag">KPI Reporting</span><span class="etag">Excel</span><span class="etag">Customer Management</span></div>
+          </div>
+        </div>
+        <div class="exp-item fade-up d2">
+          <div class="exp-dot" style="background:var(--text3);box-shadow:none;"></div>
+          <div class="exp-card exp-ghost">
+            <div class="exp-head"><div class="exp-role">Summer Intern — Outlook Group</div><div class="exp-date">Placeholder</div></div>
+            <div class="exp-org">Add details here</div>
+          </div>
+        </div>
+        <div class="exp-item fade-up d3">
+          <div class="exp-dot" style="background:var(--text3);box-shadow:none;"></div>
+          <div class="exp-card exp-ghost">
+            <div class="exp-head"><div class="exp-role">Project Management Intern — Pehchaan The Street School</div><div class="exp-date">Placeholder</div></div>
+            <div class="exp-org">Add details here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ RESUME ══════ -->
+<div id="pg-resume" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Document</div>
+      <div class="sec-title fade-up d1">Resume</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="resume-actions fade-up d3">
+        <a href="Rohit_Suman_ATS_Resume.docx" download class="btn btn-purple">⬇ Download Resume</a>
+        <a href="https://www.linkedin.com/in/rohit-suman-62681315a/" target="_blank" rel="noopener" class="btn btn-outline">View LinkedIn ↗</a>
+      </div>
+      <div class="resume-view fade-up d4">
+        <div class="resume-name">ROHIT SUMAN</div>
+        <div class="resume-headline">Data-Driven Analyst | Marketing, Finance &amp; Supply Chain | MBA Business Analytics</div>
+        <div class="resume-contact">
+          <span>📞 +91 79766 48706</span>
+          <span>✉ rohitsuman688@gmail.com</span>
+          <span>📍 Jaipur, India</span>
+          <span>🔗 linkedin.com/in/rohit-suman-62681315a</span>
+        </div>
+        <div class="resume-sec">
+          <div class="resume-sec-title">Professional Summary</div>
+          <p style="font-size:0.86rem;color:var(--text2);line-height:1.75;">MBA candidate in Business Analytics at SIBM-B with hands-on experience in data analysis, dashboarding, and statistical modeling across marketing, finance, and operations. Skilled in Excel, SQL, Power BI, and Tableau. Winner of IIT Madras Dataverse 2026. Proven ability to deliver measurable business impact through data-driven insights.</p>
+        </div>
+        <div class="resume-sec">
+          <div class="resume-sec-title">Education</div>
+          <div class="resume-exp-head"><span>MBA — Business Analytics</span><span style="font-size:0.8rem;color:var(--text2);font-weight:600;">2025–2027</span></div>
+          <div class="resume-exp-sub">Symbiosis Institute of Business Management, Bengaluru</div>
+          <div class="resume-exp-head" style="margin-top:0.85rem;"><span>B.Sc. — Science</span><span style="font-size:0.8rem;color:var(--text2);font-weight:600;">Completed</span></div>
+          <div class="resume-exp-sub">S.S. Jain Subodh P.G. Autonomous College, Jaipur</div>
+        </div>
+        <div class="resume-sec">
+          <div class="resume-sec-title">Experience</div>
+          <div class="resume-exp-head"><span>E-Commerce Data Analyst Intern</span><span style="font-size:0.8rem;color:var(--text2);font-weight:600;">Jan–Feb 2025</span></div>
+          <div class="resume-exp-sub">Shivam Mishra Digital OPC Pvt Ltd · Remote</div>
+          <ul class="resume-list">
+            <li>Analyzed sales data for 100+ SKUs; optimized Amazon PPC for 40+ ASINs — ROI +15%, ad spend -10%</li>
+            <li>SEO &amp; keyword optimization boosted organic traffic by 20% and sales by 12%</li>
+            <li>Built KPI dashboards and resolved 30+ customer queries</li>
+          </ul>
+        </div>
+        <div class="resume-sec">
+          <div class="resume-sec-title">Skills</div>
+          <p style="font-size:0.84rem;color:var(--text2);">Tools: Excel · SQL · Power BI · Tableau · R · SPSS · Python</p>
+          <p style="font-size:0.84rem;color:var(--text2);margin-top:4px;">Techniques: Data Analysis · Visualization · Regression · Hypothesis Testing · EDA</p>
+          <p style="font-size:0.84rem;color:var(--text2);margin-top:4px;">Domains: Marketing · Financial · Operations Research · HR Analytics</p>
+        </div>
+        <div class="resume-sec" style="margin-bottom:0;">
+          <div class="resume-sec-title">Awards &amp; Activities</div>
+          <ul class="resume-list">
+            <li>Winner — IIT Madras Dataverse 2026 (National Case Competition)</li>
+            <li>Member — DATALYTICS Club, SIBM-B (2025)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ CONTACT ══════ -->
+<div id="pg-contact" class="pg">
+  <section class="section">
+    <div class="sw">
+      <div class="eyebrow fade-up">Get In Touch</div>
+      <div class="sec-title fade-up d1">Contact</div>
+      <div class="sec-line fade-up d2"></div>
+      <div class="contact-grid">
+        <div class="fade-up d1">
+          <div class="contact-left">
+            <h3>Let's Turn Data Into <span>Decisions</span></h3>
+            <p>I'm open to internship opportunities, freelance analytics projects, part-time roles, and networking. If you have a project, role, or collaboration in mind — let's talk.</p>
+            <div class="ci-list">
+              <a href="mailto:rohitsuman688@gmail.com" class="ci-item"><div class="ci-icon">✉️</div><div><div class="ci-label">Email</div><div class="ci-val">rohitsuman688@gmail.com</div></div></a>
+              <a href="tel:+917976648706" class="ci-item"><div class="ci-icon">📞</div><div><div class="ci-label">Phone</div><div class="ci-val">+91 79766 48706</div></div></a>
+              <a href="https://www.linkedin.com/in/rohit-suman-62681315a/" target="_blank" rel="noopener" class="ci-item"><div class="ci-icon">🔗</div><div><div class="ci-label">LinkedIn</div><div class="ci-val">rohit-suman-62681315a</div></div></a>
+              <a class="ci-item"><div class="ci-icon">💻</div><div><div class="ci-label">GitHub</div><div class="ci-val">Add your GitHub link here</div></div></a>
+              <div class="ci-item"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Jaipur, India · Open to Remote</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form fade-up d2">
+          <div class="form-title">Send a Message ✦</div>
+          <div class="fg"><label class="fl">Your Name</label><input type="text" class="fi" placeholder="John Doe"></div>
+          <div class="fg"><label class="fl">Email Address</label><input type="email" class="fi" placeholder="john@company.com"></div>
+          <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="Internship / Collaboration / Project"></div>
+          <div class="fg"><label class="fl">Message</label><textarea class="ft" placeholder="Tell me about the opportunity..."></textarea></div>
+          <button class="form-btn" onclick="alert('Tip: Connect this form to Formspree.io for free email delivery!')">Send Message →</button>
+          <p style="font-size:0.7rem;color:var(--text3);text-align:center;margin-top:0.75rem;">Or email directly: rohitsuman688@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">Rohit <span>Suman</span></div>
+    <ul class="foot-links">
+      <li><a onclick="showPage('home');return false;">Home</a></li>
+      <li><a onclick="showPage('portfolio');return false;">Portfolio</a></li>
+      <li><a onclick="showPage('certifications');return false;">Certifications</a></li>
+      <li><a onclick="showPage('resume');return false;">Resume</a></li>
+      <li><a onclick="showPage('contact');return false;">Contact</a></li>
+    </ul>
+    <div class="foot-copy">© 2026 Rohit Suman · Jaipur, India</div>
+  </div>
+</footer>
+
+<script>
+// ── STAR PARTICLES ──
+(function(){
+  const c = document.getElementById('starCanvas');
+  const ctx = c.getContext('2d');
+  let stars = [];
+  function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', () => { resize(); initStars(); });
+  function initStars(){
+    stars = [];
+    const n = Math.floor(c.width * c.height / 5000);
+    for(let i=0;i<n;i++){
+      stars.push({
+        x: Math.random()*c.width,
+        y: Math.random()*c.height,
+        r: Math.random()*1.2+0.1,
+        a: Math.random()*0.7+0.1,
+        speed: Math.random()*0.12+0.02,
+        twinkle: Math.random()*Math.PI*2
+      });
+    }
+  }
+  initStars();
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    const t = Date.now()*0.001;
+    stars.forEach(s => {
+      const alpha = s.a * (0.6 + 0.4*Math.sin(t*1.5 + s.twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(200,190,255,' + alpha + ')';
+      ctx.fill();
+      s.y -= s.speed;
+      if(s.y < -2){ s.y = c.height; s.x = Math.random()*c.width; }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── PAGE SYSTEM ──
+function showPage(id){
+  document.querySelectorAll('.pg').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById('pg-'+id);
+  if(pg){ pg.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); setTimeout(initAnim,80); }
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.classList.remove('active');
+    if(a.dataset.page === id) a.classList.add('active');
+  });
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+// ── ANIMATIONS ──
+function initAnim(){
+  document.querySelectorAll('.fade-up:not(.in)').forEach(el => {
+    new IntersectionObserver(([e]) => { if(e.isIntersecting){ el.classList.add('in'); }},{threshold:0.1}).observe(el);
+  });
+}
+initAnim();
+
+// ── NAV SCROLL EFFECT ──
+window.addEventListener('scroll', () => {
+  const n = document.getElementById('mainNav');
+  if(window.scrollY > 30) n.classList.add('scrolled');
+  else n.classList.remove('scrolled');
+});
+
+// ── TYPING (cycles through roles in the hero) ──
+(function(){
+  const roles = ['Suman.','Data-Driven Analyst.','Business Analytics Expert.','Power BI Specialist.','Marketing Analyst.','Financial Analyst.','IIT Madras Winner 🏆'];
+  const el = document.querySelector('.hero-name .grad');
+  if(!el) return;
+  let ri=0,ci=roles[0].length,del=false;
+  function tick(){
+    const r = roles[ri];
+    if(del){ ci--; if(ci===0){ del=false; ri=(ri+1)%roles.length; }}
+    else{ ci++; if(ci===r.length){ del=true; setTimeout(tick,1500); return; }}
+    el.textContent = r.slice(0,ci);
+    setTimeout(tick, del?38:75);
+  }
+  setTimeout(tick,2500);
+})();
+
+// ── PORTFOLIO FILTER ──
+function filterP(cat,el){
+  document.querySelectorAll('#pg-portfolio .ftab').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#portGrid .proj-card').forEach(c => {
+    c.style.display = (cat==='all' || (c.dataset.cat && c.dataset.cat.includes(cat))) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
