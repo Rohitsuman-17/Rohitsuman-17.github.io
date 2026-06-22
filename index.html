@@ -511,10 +511,31 @@ footer{position:relative;z-index:1;background:rgba(8,4,15,0.8);border-top:1px so
       <div class="sec-title fade-up d1">Certifications</div>
       <div class="sec-line fade-up d2"></div>
       <div class="cert-grid">
-        <div class="cert-card fade-up d1"><div class="cert-icon">📊</div><div class="cert-name">Data Insights & Visualization</div><div class="cert-org">Grant Thornton Bharat</div><div class="cert-yr">2025</div><span class="cert-tag">Analytics</span></div>
-        <div class="cert-card fade-up d2"><div class="cert-icon">🔵</div><div class="cert-name">Tableau BI Analyst Professional</div><div class="cert-org">Coursera</div><div class="cert-yr">2024</div><span class="cert-tag">Technology</span></div>
-        <div class="cert-card fade-up d3"><div class="cert-icon">🗄️</div><div class="cert-name">SQL for Data Analysis</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Technology</span></div>
-      </div>
+        <div class="cert-card fade-up d1" onclick="goToCert('cert1')" style="cursor:pointer;">
+    <div class="cert-icon">📊</div>
+    <div class="cert-name">Data Insights & Visualization</div>
+    <div class="cert-org">Grant Thornton Bharat</div>
+    <div class="cert-yr">2025</div>
+    <span class="cert-tag">Analytics</span>
+  </div>
+
+  <div class="cert-card fade-up d2" onclick="goToCert('cert2')" style="cursor:pointer;">
+    <div class="cert-icon">📈</div>
+    <div class="cert-name">Tableau BI Analyst Professional</div>
+    <div class="cert-org">Coursera</div>
+    <div class="cert-yr">2024</div>
+    <span class="cert-tag">Technology</span>
+  </div>
+
+  <div class="cert-card fade-up d3" onclick="goToCert('cert4')" style="cursor:pointer;">
+    <div class="cert-icon">🗄️</div>
+    <div class="cert-name">SQL for Data Analysis</div>
+    <div class="cert-org">LinkedIn Learning</div>
+    <div class="cert-yr">2025</div>
+    <span class="cert-tag">Technology</span>
+  </div>
+
+</div>
       <div class="section-foot fade-up d4"><a class="btn btn-outline" onclick="showPage('certifications');return false;">View All Certifications →</a></div>
     </div>
   </section>
@@ -622,12 +643,79 @@ footer{position:relative;z-index:1;background:rgba(8,4,15,0.8);border-top:1px so
       <div class="sec-title fade-up d1">Certifications</div>
       <div class="sec-line fade-up d2"></div>
       <div class="cert-grid">
-        <div class="cert-card fade-up d1"><div class="cert-icon">📊</div><div class="cert-name">Data Insights &amp; Visualization Certification</div><div class="cert-org">Grant Thornton Bharat</div><div class="cert-yr">2025</div><span class="cert-tag">Analytics</span></div>
-        <div class="cert-card fade-up d2"><div class="cert-icon">🔵</div><div class="cert-name">Tableau BI Analyst Professional Certificate</div><div class="cert-org">Coursera</div><div class="cert-yr">2024</div><span class="cert-tag">Technology</span></div>
-        <div class="cert-card fade-up d3"><div class="cert-icon">👁️</div><div class="cert-name">Data Visualisation: Empowering Business</div><div class="cert-org">Forage</div><div class="cert-yr">2025</div><span class="cert-tag">Analytics</span></div>
-        <div class="cert-card fade-up d4"><div class="cert-icon">🗄️</div><div class="cert-name">SQL for Data Analysis</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Technology</span></div>
-        <div class="cert-card fade-up d5"><div class="cert-icon">⚡</div><div class="cert-name">Power BI Essential Training (2024)</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Technology</span></div>
-        <div class="cert-card fade-up d6"><div class="cert-icon">💰</div><div class="cert-name">Financial Portfolio Management Fundamentals</div><div class="cert-org">LinkedIn Learning</div><div class="cert-yr">2025</div><span class="cert-tag">Finance</span></div>
+
+        <div class="cert-card fade-up d1">
+          <div class="cert-icon">📊</div>
+          <div class="cert-name">Data Insights & Visualization Certification</div>
+          <div class="cert-org">Grant Thornton Bharat</div>
+          <div class="cert-yr">2025</div>
+          <span class="cert-tag">Analytics</span>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="cert_data_insights.jpg" target="_blank" style="font-size:12px; color:#7c6aff; text-decoration:none; border:1px solid #7c6aff; padding:4px 10px; border-radius:20px;">📄 View</a>
+          </div>
+        </div>
+
+        <div class="cert-card fade-up d2">
+          <div class="cert-icon">📈</div>
+          <div class="cert-name">Tableau BI Analyst Professional Certificate</div>
+          <div class="cert-org">Coursera</div>
+          <div class="cert-yr">2024</div>
+          <span class="cert-tag">Technology</span>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="cert_tableau.jpg" target="_blank" style="font-size:12px; color:#7c6aff; text-decoration:none; border:1px solid #7c6aff; padding:4px 10px; border-radius:20px;">📄 View</a>
+            <a href="YOUR_COURSERA_LINK" target="_blank" style="font-size:12px; color:#00bfff; text-decoration:none; border:1px solid #00bfff; padding:4px 10px; border-radius:20px;">🔗 Verify</a>
+          </div>
+        </div>
+
+        <div class="cert-card fade-up d3">
+          <div class="cert-icon">👁️</div>
+          <div class="cert-name">Data Visualisation: Empowering Business</div>
+          <div class="cert-org">Forage (Tata)</div>
+          <div class="cert-yr">2025</div>
+          <span class="cert-tag">Analytics</span>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="cert_tata_forage.jpg" target="_blank" style="font-size:12px; color:#7c6aff; text-decoration:none; border:1px solid #7c6aff; padding:4px 10px; border-radius:20px;">📄 View</a>
+          </div>
+        </div>
+
+        <div class="cert-card fade-up d4">
+          <div class="cert-icon">🗄️</div>
+          <div class="cert-name">SQL for Data Analysis</div>
+          <div class="cert-org">LinkedIn Learning</div>
+          <div class="cert-yr">2025</div>
+          <span class="cert-tag">Technology</span>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="cert_sql.jpg" target="_blank" style="font-size:12px; color:#7c6aff; text-decoration:none; border:1px solid #7c6aff; padding:4px 10px; border-radius:20px;">📄 View</a>
+            <a href="YOUR_LINKEDIN_SQL_LINK" target="_blank" style="font-size:12px; color:#00bfff; text-decoration:none; border:1px solid #00bfff; padding:4px 10px; border-radius:20px;">🔗 Verify</a>
+          </div>
+        </div>
+
+        <div class="cert-card fade-up d5">
+          <div class="cert-icon">⚡</div>
+          <div class="cert-name">Power BI Essential Training (2024)</div>
+          <div class="cert-org">LinkedIn Learning</div>
+          <div class="cert-yr">2025</div>
+          <span class="cert-tag">Technology</span>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="cert_powerbi.jpg" target="_blank" style="font-size:12px; color:#7c6aff; text-decoration:none; border:1px solid #7c6aff; padding:4px 10px; border-radius:20px;">📄 View</a>
+            <a href="YOUR_LINKEDIN_POWERBI_LINK" target="_blank" style="font-size:12px; color:#00bfff; text-decoration:none; border:1px solid #00bfff; padding:4px 10px; border-radius:20px;">🔗 Verify</a>
+          </div>
+        </div>
+
+        <div class="cert-card fade-up d6">
+          <div class="cert-icon">💰</div>
+          <div class="cert-name">Financial Portfolio Management Fundamentals</div>
+          <div class="cert-org">LinkedIn Learning</div>
+          <div class="cert-yr">2025</div>
+          <span class="cert-tag">Finance</span>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="cert_financial.jpg" target="_blank" style="font-size:12px; color:#7c6aff; text-decoration:none; border:1px solid #7c6aff; padding:4px 10px; border-radius:20px;">📄 View</a>
+            <a href="YOUR_LINKEDIN_FINANCE_LINK" target="_blank" style="font-size:12px; color:#00bfff; text-decoration:none; border:1px solid #00bfff; padding:4px 10px; border-radius:20px;">🔗 Verify</a>
+          </div>
+        </div>
+
+        <!-- ➕ FUTURE CERT — copy any card block above and paste here, update details -->
+
       </div>
     </div>
   </section>
