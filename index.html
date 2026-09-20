@@ -944,7 +944,28 @@ footer{position:relative;z-index:1;background:rgba(8,4,15,0.8);border-top:1px so
           <div class="fg"><label class="fl">Email Address</label><input type="email" class="fi" placeholder="john@company.com"></div>
           <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="Internship / Collaboration / Project"></div>
           <div class="fg"><label class="fl">Message</label><textarea class="ft" placeholder="Tell me about the opportunity..."></textarea></div>
-          <button class="form-btn" https://formspree.io/f/xgavavgp>Send Message →</button>
+          <button class="form-btn" <form action="https://formspree.io/f/xgavavgp" method="POST">
+  <div class="fg">
+    <label class="fl">Your Name</label>
+    <input type="text" name="name" class="fi" placeholder="John Doe" required>
+  </div>
+  <div class="fg">
+    <label class="fl">Email</label>
+    <input type="email" name="email" class="fi" placeholder="john@company.com" required>
+  </div>
+  <div class="fg">
+    <label class="fl">Subject</label>
+    <input type="text" name="subject" class="fi" placeholder="Internship / Collaboration / Project" required>
+  </div>
+  <div class="fg">
+    <label class="fl">Message</label>
+    <textarea name="message" class="ft" placeholder="Tell me about the opportunity..." required></textarea>
+  </div>
+  <button type="submit" class="form-btn">Send Message →</button>
+  <p style="font-size:0.68rem;color:var(--text3);text-align:center;margin-top:0.75rem;">
+    Or email: rohitsuman688@gmail.com
+  </p>
+</form>>Send Message →</button>
           <p style="font-size:0.7rem;color:var(--text3);text-align:center;margin-top:0.75rem;">Or email directly: rohitsuman688@gmail.com</p>
         </div>
       </div>
